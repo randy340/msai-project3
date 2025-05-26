@@ -40,8 +40,21 @@ def main(args):  # Write the function name for the main data preparation logic
     # Save the train and test data
     # os.makedirs(args.train_data, exist_ok=True)  # Create directories for train_data and test_data
     # os.makedirs(args.test_data, exist_ok=True)  # Create directories for train_data and test_data
-    train_df.to_csv(os.path.join(args.train_data, "train.csv"), index=False)  # Specify the name of the train data file
-    test_df.to_csv(os.path.join(args.test_data, "test.csv"), index=False)  # Specify the name of the test data file
+    # train_df.to_csv(os.path.join(args.train_data, "train.csv"), index=False)  # Specify the name of the train data file
+    # test_df.to_csv(os.path.join(args.test_data, "test.csv"), index=False)  # Specify the name of the test data file
+
+
+    # Ensure output directories exist
+    Path(args.train_data).mkdir(parents=True, exist_ok=True)
+    Path(args.test_data).mkdir(parents=True, exist_ok=True)
+
+    # Save to provided output locations
+    train_path = os.path.join(args.train_data, "train.csv")
+    test_path = os.path.join(args.test_data, "test.csv")
+    
+    train_df.to_csv(train_path, index=False)
+    test_df.to_csv(test_path, index=False)
+
 
     # log the metrics
     mlflow.log_metric('train size', train_df.shape[0])  # Log the train dataset size
