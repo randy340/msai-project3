@@ -45,8 +45,8 @@ def main(args):  # Write the function name for the main data preparation logic
 
 
     # Ensure output directories exist
-    Path(args.train_data).mkdir(parents=True, exist_ok=True)
-    Path(args.test_data).mkdir(parents=True, exist_ok=True)
+    # Path(args.train_data).mkdir(parents=True, exist_ok=True)
+    # Path(args.test_data).mkdir(parents=True, exist_ok=True)
 
     # Save to provided output locations
     train_path = os.path.join(args.train_data, "train.csv")
